@@ -21,7 +21,12 @@ class Breakout():
 
 		self.__pad = Pad((0, 0), 0)
 		self.__balls = [
-			Ball((0,0), pygame.image.load(GameConstants.SPRITE_BALL), self)
+			Ball((400,400), pygame.image.load(GameConstants.SPRITE_BALL), self),
+			Ball((100,400), pygame.image.load(GameConstants.SPRITE_BALL), self),
+			Ball((200,400), pygame.image.load(GameConstants.SPRITE_BALL), self),
+			Ball((300,400), pygame.image.load(GameConstants.SPRITE_BALL), self),
+			Ball((500,400), pygame.image.load(GameConstants.SPRITE_BALL), self)
+
 			]
 
 		pygame.init()
