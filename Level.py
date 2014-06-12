@@ -1,4 +1,8 @@
-
+import os
+import fileinput
+import pygame
+from bricks import *
+from shared import *
 
 class Level():
 
@@ -21,4 +25,29 @@ class Level():
 		pass
 
 	def load(self, level):
-		pass
+		self.__currentLevel = level
+		self.__bricks = []
+
+		x, y = 0, 0 #Setting x, y coordinates to find bricks
+
+		for line in fileinput.input(os.path.join\
+			("Assets", "levels", "level" + str(level) + ".dat")):
+			for currentBrick in line:
+				if currentBrick == "1":
+					brick = Brick([x, y], pygame.image.load(GameConstants.SPRITE_BRICK), self.__game)
+					self.__bricks.append(brick)
+					self.__amountOfBricksLeft += 1
+				elif currentBrick == "2":
+					brick = SpeedBrick([x, y], pygame.image.load\
+						(GameConstants.SPRITE_SPEEDBRICK), self.__game)
+					self.__bricks.append(brick)
+					self.__amountOfBricksLeft += 1
+				elif currentBrick == "3":
+					brick = LifeBrick([x, y], pygame.image.load\
+						(GameConstants.SPRITE_LIFEBRICK), self.__game)
+					self.__bricks.append(brick)
+					self.__amountOfBricksLeft += 1
+
+				x += GameConstants.BRICK_SIZE[0]
+			x = 0
+			y += GameConstants.BRICK_SIZE[1]

@@ -1,3 +1,3 @@
-from Bricks.Brick import Brick
-from Brick.LifeBrick import LifeBrick
-from Brick.SpeedBrick import SpeedBrick
+from bricks.Brick import Brick
+from bricks.LifeBrick import LifeBrick
+from bricks.SpeedBrick import SpeedBrick
