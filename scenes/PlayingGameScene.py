@@ -12,7 +12,7 @@ class PlayingGameScene(Scene):
 		game = self.getGame()
 
 		#Section to regulate balls intersecting with each other
-
+		pad = game.getPad()
 		balls = game.getBalls()
 		for ball in balls:
 			for ball2 in balls:
@@ -32,6 +32,12 @@ class PlayingGameScene(Scene):
 		for brick in game.getLevel().getBricks():
 			if not brick.isDestroyed():
 				game.screen.blit(brick.getSprite(), brick.getPosition())
+		
+		if ball.intersects(pad):
+			ball.changeDirection(pad)
+		
+		pad.setPosition((pygame.mouse.get_pos()[0], pad.getPosition()[1]))
+		game.screen.blit(pad.getSprite(), pad.getPosition())
 
 
 	def handleEvents(self, events):
@@ -40,3 +46,7 @@ class PlayingGameScene(Scene):
 		for event in events:
 			if event.type == pygame.QUIT:
 				exit()
+
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				for ball in self.getGame().getBalls():
+					ball.setMotion(1)

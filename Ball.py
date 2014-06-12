@@ -61,6 +61,14 @@ class Ball(GameObject):
 
     def updatePosition(self):
 
+        if not self.isInMotion():
+            padPosition = self.__game.getPad().getPosition()
+            self.setPosition((
+                padPosition[0] + (GameConstants.PAD_SIZE[0])/2,
+                GameConstants.SCREEN_SIZE[1] - GameConstants.PAD_SIZE[1] - GameConstants.BALL_SIZE[1]
+            ))
+            return 
+
         position = self.getPosition()
         size = self.getSize()
 
