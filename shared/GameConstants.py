@@ -10,3 +10,4 @@ class GameConstants:
 	SPRITE_BRICK = os.path.join("Assets", "standard.png")
 	SPRITE_SPEEDBRICK = os.path.join("Assets", "speed.png")
 	SPRITE_LIFEBRICK = os.path.join("Assets", "life.png")
+	SPRITE_PAD = os.path.join("Assets", "pad.png")
