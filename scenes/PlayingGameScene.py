@@ -11,10 +11,13 @@ class PlayingGameScene(Scene):
 	def render(self):
 		super(PlayingGameScene, self).render()
 		game = self.getGame()
-
+		
+		if game.getLives() <= 0:
+			game.changeScene(GameConstants.GAMEOVER_SCENE)
 		#Section to regulate balls intersecting with each other
 		pad = game.getPad()
 		balls = game.getBalls()
+		
 		for ball in balls:
 			for ball2 in balls:
 				if ball != ball2 and ball.intersects(ball2):
@@ -38,6 +41,11 @@ class PlayingGameScene(Scene):
 		if ball.intersects(pad):
 			ball.changeDirection(pad)
 		
+		
+		if ball.isBallDead():
+			ball.setMotion(0)
+			game.reduceLives()
+			
 		pad.setPosition((pygame.mouse.get_pos()[0], pad.getPosition()[1]))
 		game.screen.blit(pad.getSprite(), pad.getPosition())
 

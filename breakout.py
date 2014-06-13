@@ -13,7 +13,7 @@ from shared import * #@UnusedWildImport
 class Breakout():
 
 	def __init__(self):
-		self.__lives = 5
+		self.__lives = 1
 		self.__score = 0
 
 		self.__level = Level(self)
@@ -87,7 +87,7 @@ class Breakout():
 		return self.__pad
 
 	def playSound(self):
-		sound = self.__sounds(soundClip)
+		sound = self.__sounds(soundClip) #@UndefinedVariable
 
 		sound.stop()
 		sound.play()
@@ -99,7 +99,9 @@ class Breakout():
 		self.__lives += 1
 
 	def reset(self):
-		pass
+		self.__lives = 5
+		self.__score = 0
+		self.__level.load(0)
 
 
 Breakout().start()
