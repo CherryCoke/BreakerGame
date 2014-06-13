@@ -1,5 +1,6 @@
 import pygame
 from scenes.Scene import Scene
+from shared import *
 
 
 class PlayingGameScene(Scene):
@@ -24,6 +25,7 @@ class PlayingGameScene(Scene):
 			for brick in game.getLevel().getBricks():
 				if ball.intersects(brick) and not brick.isDestroyed():
 					brick.hit()
+					game.increaseScore(brick.getHitPoints())
 					ball.changeDirection(brick)
 					break
 			ball.updatePosition()
@@ -32,13 +34,24 @@ class PlayingGameScene(Scene):
 		for brick in game.getLevel().getBricks():
 			if not brick.isDestroyed():
 				game.screen.blit(brick.getSprite(), brick.getPosition())
-		
+				
 		if ball.intersects(pad):
 			ball.changeDirection(pad)
 		
 		pad.setPosition((pygame.mouse.get_pos()[0], pad.getPosition()[1]))
 		game.screen.blit(pad.getSprite(), pad.getPosition())
 
+		self.clearText()
+
+		self.addText("Your Score: " + str(game.getScore()),
+					 x = 0,
+					 y = GameConstants.SCREEN_SIZE[1] - 60,
+					 size = 30)
+
+		self.addText("Lives: " + str(game.getLives()),
+					 x = 0,
+					 y = GameConstants.SCREEN_SIZE[1] - 30,
+					 size = 30)
 
 	def handleEvents(self, events):
 		super(PlayingGameScene, self).handleEvents(events)
