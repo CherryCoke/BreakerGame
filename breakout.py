@@ -5,9 +5,9 @@
 # Together !!!!  #
 ##################
 import pygame 
-from __init__ import *
-from scenes import *
-from shared import *
+from __init__ import * #@UnusedWildImport
+from scenes import * #@UnusedWildImport
+from shared import * #@UnusedWildImport
 
 
 class Breakout():

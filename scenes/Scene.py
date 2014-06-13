@@ -7,8 +7,8 @@ class Scene:
 		self.__texts = []
 
 	def render(self):
-	 	for text in self.__texts:
-	 		self.__game.screen.blit(text[0], text[1])
+		for text in self.__texts:
+			self.__game.screen.blit(text[0], text[1])
 
 	def getGame(self):
 		return self.__game

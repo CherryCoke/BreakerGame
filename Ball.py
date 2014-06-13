@@ -1,5 +1,5 @@
-import pygame
-from shared import *
+import pygame #@UnusedImport
+from shared import * #@UnusedWildImport
 
 class Ball(GameObject):
 

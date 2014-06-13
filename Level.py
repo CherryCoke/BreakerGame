@@ -1,8 +1,8 @@
-import os
+import os #@UnusedImport
 import fileinput
 import pygame
-from bricks import *
-from shared import *
+from bricks import * #@UnusedWildImport 
+from shared import * #@UnusedWildImport
 
 class Level():
 

@@ -8,7 +8,7 @@ class Brick(GameObject):
 		self.__hitpoints = 100 #hitpoints bricks have
 		self.__lives = 1 #lives bricks have\
 		#Importing __init__ from GameObject 
-		super(Brick, self).__init__(position, (GameConstants.BRICK_SIZE), sprite)
+		super(Brick, self).__init__(position, (GameConstants.BRICK_SIZE), sprite) #@UndefinedVariable
 
 	def getGame(self):
 		return self.__game

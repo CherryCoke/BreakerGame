@@ -1,4 +1,4 @@
-from shared import *
+from shared import * #@UnusedWildImport
 
 class Pad(GameObject):
 
