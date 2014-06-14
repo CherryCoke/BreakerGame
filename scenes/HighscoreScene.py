@@ -38,5 +38,5 @@ class HighscoreScene(Scene):
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_1:
 					self.getGame().reset()
-					self.getGame().changeScene(GameConstants.PLAYING_SCENE) #@UndefinedVariable
+					self.getGame().changeScene(GameConstants.MAINMENU_SCENE) #@UndefinedVariable
 		

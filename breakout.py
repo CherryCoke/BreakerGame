@@ -17,7 +17,7 @@ class Breakout():
 		self.__score = 0
 
 		self.__level = Level(self)
-		self.__level.loadRandom()
+		self.__level.load(0)
 
 		self.__pad = Pad((GameConstants.SCREEN_SIZE[0]/2,
 						  GameConstants.SCREEN_SIZE[1] - GameConstants.PAD_SIZE[1]),
@@ -106,7 +106,7 @@ class Breakout():
 		self.__lives += 1
 
 	def reset(self):
-		self.__lives = 5
+		self.__lives = 1
 		self.__score = 0
 		self.__level.load(0)
 

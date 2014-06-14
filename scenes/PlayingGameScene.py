@@ -18,6 +18,13 @@ class PlayingGameScene(Scene):
 		#Section to regulate balls intersecting with each other
 		pad = game.getPad()
 		balls = game.getBalls()
+		level = game.getLevel()
+		
+		if level.getAmountOfBricksLeft() <= 0:
+			for ball in balls:
+				ball.setMotion(0)
+			
+			level.loadNextLevel()
 		
 		for ball in balls:
 			for ball2 in balls:
@@ -30,6 +37,7 @@ class PlayingGameScene(Scene):
 				if ball.intersects(brick) and not brick.isDestroyed():
 					game.playSound(brick.getHitSound())
 					brick.hit()
+					level.brickHit()
 					game.increaseScore(brick.getHitPoints())
 					ball.changeDirection(brick)
 					break
