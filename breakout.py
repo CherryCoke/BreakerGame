@@ -48,7 +48,14 @@ class Breakout():
 
 		self.__currentScene = 0
 
-		self.__sounds = ()
+		self.__sounds = (
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_GAMEOVER),
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_HIT_BRICK),
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_HIT_BRICK_LIFE),
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_HIT_BRICK_SPEED),
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_HIT_WALL),
+				pygame.mixer.Sound(GameConstants.SOUND_FILE_HIT_PAD)
+			)
 
 
 	def start(self):
@@ -86,8 +93,8 @@ class Breakout():
 	def getPad(self):
 		return self.__pad
 
-	def playSound(self):
-		sound = self.__sounds(soundClip) #@UndefinedVariable
+	def playSound(self, soundClip):
+		sound = self.__sounds[soundClip]
 
 		sound.stop()
 		sound.play()

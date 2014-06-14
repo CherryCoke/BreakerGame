@@ -13,6 +13,7 @@ class PlayingGameScene(Scene):
 		game = self.getGame()
 		
 		if game.getLives() <= 0:
+			game.playSound(GameConstants.SOUND_GAMEOVER)
 			game.changeScene(GameConstants.GAMEOVER_SCENE)
 		#Section to regulate balls intersecting with each other
 		pad = game.getPad()
@@ -27,6 +28,7 @@ class PlayingGameScene(Scene):
 		for ball in game.getBalls():
 			for brick in game.getLevel().getBricks():
 				if ball.intersects(brick) and not brick.isDestroyed():
+					game.playSound(brick.getHitSound())
 					brick.hit()
 					game.increaseScore(brick.getHitPoints())
 					ball.changeDirection(brick)
@@ -39,6 +41,7 @@ class PlayingGameScene(Scene):
 				game.screen.blit(brick.getSprite(), brick.getPosition())
 				
 		if ball.intersects(pad):
+			game.playSound(GameConstants.SOUND_HIT_PAD)
 			ball.changeDirection(pad)
 		
 		
